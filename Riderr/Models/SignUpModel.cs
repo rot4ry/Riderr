@@ -7,5 +7,6 @@ namespace Riderr.Models
 {
     public class SignUpModel
     {
+
     }
 }
