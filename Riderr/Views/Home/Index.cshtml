@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Welcome!";
+}
+
+<center>
+    <img src="/Resources/logo.png" alt="Error" style="width:300px; height:auto" />
+</center>
+
+<div class="text-center">
+    <h1 class="display-3">Welcome to Riderr!</h1>
+    <div class="text-center">
+        <div class="text-lg-center">
+            <h2>Find your roadtrip buddy with us!</h2>
+            <hr />
+            <input type="button"
+                   style="height:55px; width: 200px; margin-right: 15px"
+                   value="Sign In"
+                   onclick="location.href='@Url.Action("SignIn", "Home")'" />
+            
+            <input type="button" 
+                   style="height:55px; width: 200px; margin-left: 15px"
+                   value="Sign Up"
+                   onclick="location.href='@Url.Action("SignUp", "Home")'" />
+        </div>
+    </div>
+</div>
