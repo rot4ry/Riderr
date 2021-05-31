@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Riderr.Classes;
+using Riderr.Classes.DBHandler;
 using Riderr.Models;
 using System;
 using System.Collections.Generic;
@@ -12,10 +14,12 @@ namespace Riderr.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DbContext _context;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _context = new DbContext();
         }
 
         public IActionResult Index()
@@ -33,10 +37,23 @@ namespace Riderr.Controllers
             return View();
         }
 
+
         public IActionResult SignUp()
         {
-            return View();
+            return View();  
         }
+
+        [HttpPost]
+        public async Task<IActionResult> SignUp(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.AddUser(user);
+                return RedirectToAction(nameof(SignIn));
+            }
+            return View(user);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

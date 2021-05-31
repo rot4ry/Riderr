@@ -1,14 +1,26 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace Riderr.Classes
 {
     public class User
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string UserId { get; set; }
+
+        [Display(Name = "First name")]
         public string FirstName { get; set; }
-        public string SecondName { get; set; }
+
+        [Display(Name = "Age")]
+        public int Age { get; set; }
+        
+        [Display(Name = "Phone number")]
         public string Phone { get; set; }
-        public string Mail { get; set; }
+        
+        [Display(Name = "Email address")]
+        public string Email { get; set; }
         //public string[] Images { get; set; }
         //public bool HasImage()
         //{
